@@ -18,7 +18,7 @@ const __dirname = path.resolve()
 connectDB()
 
 //middleware : this middleware will parse JSON bodies
-if(process.env.NODE_ENV !== production){
+if(process.env.NODE_ENV !== "production"){
 app.use(
     cors({
 origin : "http://localhost:5173"
@@ -32,7 +32,7 @@ app.use(rateLimiter);
 
 app.use("/api/notes", notesRoutes);
 
-if(procces.env.NODE_ENV === "production") {
+if(process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 app.get("*", (req, res) => {
